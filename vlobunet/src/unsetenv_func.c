@@ -62,7 +62,7 @@ void	run_unsetenv(char *str)
 		if (atr[0])
 		{
 			while (atr[++i])
-				(ft_strcmp(atr[i], "HOME") && ft_strcmp(atr[i], "USER")) ? \
+				(ft_strcmp(atr[i], "HOME") && ft_strcmp(atr[i], "PATH")) ? \
 					run_unset(atr[i]) : error_unset(atr[i]);
 			ft_freestrarr(atr);
 		}

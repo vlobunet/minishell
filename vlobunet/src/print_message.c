@@ -18,7 +18,7 @@ char	*ft_get_env_var(char *str)
 	int	size;
 
 	i = 0;
-	if (!g_env)
+	if (!g_env )
 		return (NULL);
 	size = ft_strlen(str);
 	while (g_env[i])
@@ -54,10 +54,13 @@ void	ft_print_message(void)
 	char	*pwd;
 
 	str = ft_get_env_var("USER=");
-	ft_putstr(C_FIOLE);
-	ft_putstr(str);
-	ft_putchar('@');
-	ft_putstr(str);
+	if (str != NULL)
+	{
+		ft_putstr(C_FIOLE);
+		ft_putstr(str);
+		ft_putchar('@');
+		ft_putstr(str);
+	}
 	str = ft_get_env_var("HOME=");
 	pwd = ft_goto(getcwd(buff, 4096), str);
 	ft_putstr(C_SINIY);

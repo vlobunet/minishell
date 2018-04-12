@@ -18,6 +18,8 @@
 # include <signal.h>
 # include <unistd.h>
 
+
+# include <stdio.h>
 char **g_env;
 
 # define C_RESET		"\033[0m"
@@ -37,6 +39,8 @@ typedef struct		s_param
 	int				b;
 	int				n;
 	int				flag;
+	int				i;
+	int				u;
 }					t_param;
 
 char				*ft_scanf(int fd);
@@ -69,7 +73,7 @@ void				run_getenv(char *atribut);
 void				run_cd(char *cmd);
 void				run_info(void);
 void				exec_cmd(char *name, char *str_atr);
-char				*run_get_env(char *env);
+char				*run_get_env(char *env, char **env_g);
 
 void				run_man(char *cmd_atr);
 int					man_echo(void);
@@ -85,5 +89,6 @@ void				error_command(char *name);
 void				error_arg(char arg);
 void				error_file(char *arg);
 void				sintax_error(void);
+void	cmd_signal(int signo);
 
 #endif

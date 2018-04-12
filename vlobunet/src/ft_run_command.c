@@ -61,6 +61,8 @@ void	ft_get_cmd(char *cmd)
 	while (cmd[k] > 32)
 		k++;
 	name = ft_strndup(cmd + i, k - i);
+	while (cmd[k] && cmd[k] <= 32)
+		k++;
 	if (cmd[k])
 		atribut = ft_strdup(cmd + i + k);
 	command_check(name, atribut);

@@ -112,12 +112,14 @@ int		ft_pars_param(char *cmd_attr, t_param *lst_pr)
 	i = 1;
 	while (cmd_attr[i])
 	{
-		if (ft_ch_sumb("eEnb", cmd_attr[i]))
+		if (ft_ch_sumb("eEnbiu", cmd_attr[i]))
 		{
 			lst_pr->e = (cmd_attr[i] == 'e' ? 1 : lst_pr->e);
 			lst_pr->e = (cmd_attr[i] == 'E' ? 1 : lst_pr->e);
 			lst_pr->n = (cmd_attr[i] == 'n' ? 1 : lst_pr->n);
 			lst_pr->b = (cmd_attr[i] == 'b' ? 1 : lst_pr->b);
+			lst_pr->i = (cmd_attr[i] == 'i' ? 1 : lst_pr->n);
+			lst_pr->u = (cmd_attr[i] == 'u' ? 1 : lst_pr->b);
 		}
 		else
 		{

@@ -56,7 +56,7 @@ void	exec_cmd(char *name, char *str_atr)
 	int		i;
 
 	i = -1;
-	path = ft_strsplit(ft_strchr(run_get_env("PATH"), '/'), ':');
+	path = ft_strsplit(ft_strchr(run_get_env("PATH", g_env), '/'), ':');
 	while (path[++i])
 		ch_cmd(name, str_atr, path[i]);
 	(path != NULL) ? ft_freestrarr(path) : 0;
