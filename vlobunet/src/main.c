@@ -62,7 +62,6 @@ int		main(int argc, char **argv, char **env)
 			while (command[i])
 				ft_get_cmd(command[i++]);
 			ft_freestrarr(command);
-			system("leaks minishell");
 		}
 		ft_freestrarr(g_env);
 	}

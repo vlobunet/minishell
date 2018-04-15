@@ -90,5 +90,6 @@ void				error_arg(char arg);
 void				error_file(char *arg);
 void				sintax_error(void);
 void	cmd_signal(int signo);
+char	*pars_name_cmd(char *cmd);
 
 #endif

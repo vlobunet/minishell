@@ -34,6 +34,9 @@ void	ft_run_cmd(char *cmd_name, char *cmd_attr)
 
 void	command_check(char *name, char *str_atr)
 {
+	int	i;
+
+	i = 0;
 	if ((!ft_strcmp(name, "setenv")) || (!ft_strcmp(name, "cat")) ||\
 		(!ft_strcmp(name, "unsetenv")) || (!ft_strcmp(name, "env")) ||\
 		(!ft_strcmp(name, "cd")) || (!ft_strcmp(name, "echo")) ||\
@@ -43,18 +46,21 @@ void	command_check(char *name, char *str_atr)
 		(!ft_strcmp(name, "exit")))
 		ft_run_cmd(name, str_atr);
 	else
-		(exec_cmd(name, str_atr));
+		{
+			while (name[i] && name[i] <= 32)
+				i++;
+			name[i] != 0 ? exec_cmd(name, str_atr) : 0;
+		}
 }
 
 void	ft_get_cmd(char *cmd)
 {
 	int		i;
-	char	*name;
-	char	*atribut;
+	char	*name = NULL;
+	char	*atribut = NULL;
 	int		k;
 
 	i = 0;
-	atribut = NULL;
 	while (cmd[i] && cmd[i] <= 32)
 		i++;
 	k = i;
@@ -66,6 +72,6 @@ void	ft_get_cmd(char *cmd)
 	if (cmd[k])
 		atribut = ft_strdup(cmd + i + k);
 	command_check(name, atribut);
-	*name ? free(name) : 0;
+	name ? free(name) : 0;
 	atribut != NULL ? free(atribut) : 0;
 }

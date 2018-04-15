@@ -12,14 +12,33 @@
 
 #include "../includes/minishell.h"
 
+void	error_unset(char *str)
+{
+	if (str)
+	{
+		ft_putstr(C_ERROR);
+		ft_putstr("WARNING : ");
+		ft_putstr(C_RESET);
+		ft_putstr("unsetenv : ");
+		ft_putstr(str);
+		ft_putendl(" : wrong attribute!");
+	}
+	else
+	{
+		ft_putstr(C_ERROR);
+		ft_putendl("setenv : invalid number of attributes.");
+		ft_putstr(C_RESET);
+	}
+}
+
 void	successful_unset(char *str)
 {
-	ft_putstr(C_YELLO);
-	ft_putstr("SUCCESS : ");
-	ft_putstr(C_RESET);
-	ft_putstr("unsetenv : ");
-	ft_putstr(str);
-	ft_putendl(" : successfully deleted!");
+		ft_putstr(C_YELLO);
+		ft_putstr("SUCCESS : ");
+		ft_putstr(C_RESET);
+		ft_putstr("unsetenv : ");
+		ft_putstr(str);
+		ft_putendl(" : successfully deleted!");
 }
 
 void	run_unset(char *cmd_attr)
@@ -62,17 +81,11 @@ void	run_unsetenv(char *str)
 		if (atr[0])
 		{
 			while (atr[++i])
-				(ft_strcmp(atr[i], "HOME") && ft_strcmp(atr[i], "PATH")) ? \
-					run_unset(atr[i]) : error_unset(atr[i]);
+				ft_strcmp(atr[i], "PATH") ? ((ft_strcmp(atr[i], "HOME")) ? \
+					run_unset(atr[i]) : error_unset(atr[i])) : run_set("PATH", "/"); 
 			ft_freestrarr(atr);
 		}
-		else
-			ft_putendl("setenv : invalid number of attributes.");
 	}
 	else
-	{
-		ft_putstr(C_ERROR);
-		ft_putendl("setenv : invalid number of attributes.");
-		ft_putstr(C_RESET);
-	}
+		error_unset(NULL);
 }

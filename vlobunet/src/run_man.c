@@ -59,6 +59,8 @@ void	run_man(char *cmd_atr)
 		ft_freestrarr(atribut);
 	}
 	else
+	{
 		error_man(2);
-	ft_freestrarr(atribut);
+		ft_freestrarr(atribut);
+	}
 }

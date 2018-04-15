@@ -28,16 +28,6 @@ void	error_setenv(int i)
 	ft_putstr(C_RESET);
 }
 
-void	error_unset(char *str)
-{
-	ft_putstr(C_ERROR);
-	ft_putstr("WARNING : ");
-	ft_putstr(C_RESET);
-	ft_putstr("unsetenv : ");
-	ft_putstr(str);
-	ft_putendl(" : wrong attribute!");
-}
-
 void	error_arg(char arg)
 {
 	ft_putstr("cat: illegal option -- ");

@@ -111,8 +111,9 @@ int	env_exec_cmd(char *path, char *name, char **env, char **argv)
 	pid_t	p;
 	char	*tmp;
 	char	*src;
-	int		status = -1;
+	int		status;
 
+	status = -1;
 	tmp = ft_strjoin(path, "/");
 	src = ft_strjoin(tmp, name);
 	if (access(src, 0 | 1) == 0)
@@ -135,24 +136,26 @@ void	env_exec(char **atr, char **env)
 {
 	int	i;
 	char **path;
-	char *tmp;
+	char *name;
 	int flag;
 
-	i = -1;
 	flag = 0;
 	if (atr[0][0] == '/')
 	{
-		path = ft_strsplit(pars_name_cmd(atr[0]), ':');
-		tmp = ft_strdup(atr[0] + ft_strlen(path[0]) + 1);
+		name = pars_name_cmd(atr[0]);
+		path = ft_strsplit(name, ':');
+		free(name);
+		name = ft_strdup(atr[0] + ft_strlen(path[0]) + 1);
 		free(atr[0]);
-		atr[0] = ft_strdup(tmp);
-		free(tmp);
+		atr[0] = ft_strdup(name);
+		free(name);
 	}
 	else
 		path = ft_strsplit(ft_strchr(run_get_env("PATH", env), '/'), ':');
 	i = -1;
 	while (path[++i])
 		env_exec_cmd(path[i], atr[0], env, atr) == 0 ? flag = 1 : 0;
+	ft_freestrarr(path);
 	if (!flag)
 		ft_putendl("No access or file not found");
 }
@@ -196,7 +199,7 @@ void	run_env_ex(char **atr)
 		env_exec(atr + i, g_env);
 	else
 		run_man("env");
-	*env != NULL ? ft_freestrarr(env) : 0;
+	env != NULL ? ft_freestrarr(env) : 0;
 }
 
 void	run_env(char *str)
