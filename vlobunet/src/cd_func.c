@@ -37,8 +37,10 @@ void	run_cd(char *cmd)
 {
 	char	*home;
 	char	**args;
+	char	*thom;
 
 	args = NULL;
+	thom = NULL;
 	home = ft_get_env_var("HOME=");
 	args = ft_strsplit(cmd, 32);
 	if (args == NULL)
@@ -51,9 +53,12 @@ void	run_cd(char *cmd)
 			change_dir(home);
 		else if (args[0][0] == '-' && !args[0][2])
 			change_dir(ft_get_env_var("OLDPWD="));
+		else if (args[0][0] == '~')
+			change_dir(thom = ft_strjoin(home, args[0] + 1));
 		else
 			change_dir(args[0]);
 	}
+	thom != NULL ? free(thom) : 0;
 	args != NULL ? ft_freestrarr(args) : 0;
 }
 

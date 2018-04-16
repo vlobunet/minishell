@@ -118,7 +118,7 @@ void	ft_get_param(char **cmd_attr, t_param *lst_pr)
 	(flag == 5 || flag == 0 || flag == 6) ? \
 		cat_from_file(cmd_attr + i, flag, lst_pr) : 0;
 }
- 
+
 void	run_cat(char *cmd_attr)
 {
 	t_param	lst_pr;

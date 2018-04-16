@@ -40,3 +40,19 @@ char	*set_str(char *src)
 	}
 	return (str);
 }
+
+char	*replase_tab(char *str)
+{
+	int		i;
+	char	*cmd;
+
+	i = -1;
+	if (!str)
+		return (NULL);
+	cmd = ft_strnew(ft_strlen(str));
+	while (str[++i])
+		cmd[i] = (str[i] < 32 ? 32 : str[i]);
+	cmd[i] = 0;
+	free(str);
+	return (cmd);
+}

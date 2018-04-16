@@ -94,5 +94,5 @@ void	exec_cmd(char *str, char *str_atr)
 		ch_cmd(str, str_atr, path[i]) == 0 ? flag = 1 : 0;
 	(path != NULL) ? ft_freestrarr(path) : 0;
 	if (!flag)
-		ft_putendl("No access or file not found");
+		ft_putendl("No access or command not found");
 }

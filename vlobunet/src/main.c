@@ -57,6 +57,7 @@ int		main(int argc, char **argv, char **env)
 			ft_print_message();
 			signal(SIGINT, signal1);
 			str = ft_scanf(0);
+			str = replase_tab(str);
 			command = ft_strsplit(str, ';');
 			free(str);
 			while (command[i])

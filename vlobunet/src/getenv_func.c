@@ -57,7 +57,7 @@ void	run_getenv(char *atribut)
 			return ;
 		}
 		ft_freestrarr(atr);
-	} 
+	}
 	ft_putstr(C_ERROR);
 	ft_putendl("getenv: invalid number of attributes");
 	ft_putstr(C_RESET);
@@ -70,7 +70,6 @@ char	**ft_env_dup(char *tmp)
 	int		size;
 	int		flag;
 	int		j;
-
 
 	i = -1;
 	j = 0;
@@ -103,10 +102,10 @@ char	*pars_name_cmd(char *cmd)
 	i = -1;
 	while (++i != x)
 		path[i] = cmd[i];
-	return(path);
+	return (path);
 }
 
-int	env_exec_cmd(char *path, char *name, char **env, char **argv)
+int		env_exec_cmd(char *path, char *name, char **env, char **argv)
 {
 	pid_t	p;
 	char	*tmp;
@@ -129,15 +128,15 @@ int	env_exec_cmd(char *path, char *name, char **env, char **argv)
 	}
 	free(tmp);
 	free(src);
-	return(status);
+	return (status);
 }
 
 void	env_exec(char **atr, char **env)
 {
-	int	i;
-	char **path;
-	char *name;
-	int flag;
+	int		i;
+	char	**path;
+	char	*name;
+	int		flag;
 
 	flag = 0;
 	if (atr[0][0] == '/')
@@ -157,7 +156,7 @@ void	env_exec(char **atr, char **env)
 		env_exec_cmd(path[i], atr[0], env, atr) == 0 ? flag = 1 : 0;
 	ft_freestrarr(path);
 	if (!flag)
-		ft_putendl("No access or file not found");
+		ft_putendl("No access or command not found");
 }
 
 char	**ft_env_dupx(void)
@@ -170,36 +169,35 @@ char	**ft_env_dupx(void)
 	env[2] = ft_strdup(run_get_env("HOME", g_env));
 	env[3] = NULL;
 	return (env);
-
 }
 
 void	run_env_ex(char **atr)
 {
 	t_param	lst_pr;
 	int		i;
-	char	**env;
+	char	**e;
 
 	i = -1;
-	env = NULL;
+	e = NULL;
 	lst_pr = (t_param){0, 0, 0, 0, 0, 0};
-	while(atr[++i] && atr[i][0] == '-')
+	while (atr[++i] && atr[i][0] == '-')
 		if (ft_pars_param(atr[i], &lst_pr) == -1)
 			return ;
 	if (i && lst_pr.i && atr[i] != NULL)
 	{
-		env = ft_env_dupx();
-		env_exec(atr + i, env);
+		e = ft_env_dupx();
+		env_exec(atr + i, e);
 	}
 	else if (i && lst_pr.u && atr[i] != NULL)
 	{
-		env = (ft_strcmp(atr[i], "PATH") ? ft_env_dup(atr[i]) : ft_env_dup("p"));
-		env_exec(atr + i + 1, env);
+		e = (ft_strcmp(atr[i], "PATH") ? ft_env_dup(atr[i]) : ft_env_dup("p"));
+		env_exec(atr + i + 1, e);
 	}
 	else if (atr[i] != NULL)
 		env_exec(atr + i, g_env);
 	else
 		run_man("env");
-	env != NULL ? ft_freestrarr(env) : 0;
+	e != NULL ? ft_freestrarr(e) : 0;
 }
 
 void	run_env(char *str)
@@ -220,23 +218,3 @@ void	run_env(char *str)
 	while (g_env[i])
 		ft_putendl(g_env[i++]);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

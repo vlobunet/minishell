@@ -89,7 +89,8 @@ void				error_command(char *name);
 void				error_arg(char arg);
 void				error_file(char *arg);
 void				sintax_error(void);
-void	cmd_signal(int signo);
-char	*pars_name_cmd(char *cmd);
+void				cmd_signal(int signo);
+char				*pars_name_cmd(char *cmd);
+char				*replase_tab(char *str);
 
 #endif

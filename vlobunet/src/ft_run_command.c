@@ -46,21 +46,23 @@ void	command_check(char *name, char *str_atr)
 		(!ft_strcmp(name, "exit")))
 		ft_run_cmd(name, str_atr);
 	else
-		{
-			while (name[i] && name[i] <= 32)
-				i++;
-			name[i] != 0 ? exec_cmd(name, str_atr) : 0;
-		}
+	{
+		while (name[i] && name[i] <= 32)
+			i++;
+		name[i] != 0 ? exec_cmd(name, str_atr) : 0;
+	}
 }
 
 void	ft_get_cmd(char *cmd)
 {
 	int		i;
-	char	*name = NULL;
-	char	*atribut = NULL;
+	char	*name;
+	char	*atribut;
 	int		k;
 
 	i = 0;
+	name = NULL;
+	atribut = NULL;
 	while (cmd[i] && cmd[i] <= 32)
 		i++;
 	k = i;

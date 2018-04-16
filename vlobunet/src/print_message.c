@@ -18,7 +18,7 @@ char	*ft_get_env_var(char *str)
 	int	size;
 
 	i = 0;
-	if (!g_env )
+	if (!g_env)
 		return (NULL);
 	size = ft_strlen(str);
 	while (g_env[i])
